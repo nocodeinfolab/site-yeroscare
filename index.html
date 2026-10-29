@@ -70,22 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 }
 .hero .container{max-width:1440px}
 
-/* background layers */
-.hero-aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.aurora{position:absolute;border-radius:50%;display:block}
-.aurora-1{width:58vw;height:58vw;min-width:560px;min-height:560px;top:-26%;right:-12%;background:radial-gradient(circle at 50% 50%,rgba(139,92,246,.5) 0%,rgba(139,92,246,.16) 42%,rgba(139,92,246,0) 68%);animation:drift1 24s ease-in-out infinite}
-.aurora-2{width:48vw;height:48vw;min-width:460px;min-height:460px;bottom:-28%;left:-12%;background:radial-gradient(circle at 50% 50%,rgba(88,28,235,.42) 0%,rgba(88,28,235,.12) 45%,rgba(88,28,235,0) 70%);animation:drift2 28s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,5%,0) scale(1.08)}}
-@keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5%,-4%,0) scale(1.07)}}
-
-.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(167,139,250,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(167,139,250,.06) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(ellipse 88% 68% at 50% 28%,#000 0%,transparent 78%);
-  mask-image:radial-gradient(ellipse 88% 68% at 50% 28%,#000 0%,transparent 78%);
-}
+/* background noise only (grid and aurora removed) */
 .hero-noise{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.28;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
@@ -287,7 +272,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .plan-comm strong{font-size:1.4rem;font-family:var(--font-display)}
 .plan-note{font-size:.82rem;opacity:.65;margin-top:6px}
 .fine{margin-top:28px;font-size:.88rem;color:rgba(255,255,255,.6);max-width:720px;line-height:1.7}
-/* PATIENT SECTIONS (new) */
+/* PATIENT SECTIONS */
 .split{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
 @media (min-width:900px){.split{grid-template-columns:1.1fr .9fr;gap:64px}}
 .stage-badge{display:inline-block;margin-bottom:18px;padding:7px 16px;border-radius:100px;background:var(--purple-light);color:var(--purple-mid);font:500 .72rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
@@ -311,7 +296,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .section-cta .section-lead{margin-left:auto;margin-right:auto;margin-bottom:0}
 .section-cta .btn-primary{color:#1c0b38}
 
-/* RECORDS PHONE (em-based: change .rphone font-size to scale the whole phone) */
+/* RECORDS PHONE */
 .rp-stage{position:relative;display:flex;justify-content:center;align-items:center;padding:12px 0}
 .rp-stage::before{content:'';position:absolute;inset:-4% -6%;background:radial-gradient(closest-side,rgba(167,139,250,.32),rgba(167,139,250,0) 72%);pointer-events:none}
 .rphone{--ink:#1a0b2e;position:relative;z-index:2;font-size:min(10px,2.8vw);width:30em;height:66em;flex:0 0 auto;font-family:var(--font-body,system-ui,-apple-system,'Segoe UI',sans-serif)}
@@ -374,7 +359,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .rp-badge{position:absolute;top:-.5em;right:-.8em;min-width:1.7em;height:1.7em;border-radius:1em;background:#ef3b3b;color:#fff;font-size:.8em;font-weight:700;display:flex;align-items:center;justify-content:center}
 @media (prefers-reduced-motion:reduce){.rp-stage{transition:none}}
 
-/* RECORDS TABLET (em-based) */
+/* RECORDS TABLET */
 @media (min-width:900px){.split-devices{grid-template-columns:1.28fr .72fr;gap:48px}}
 .rtablet{display:none;position:relative;z-index:1;font-size:clamp(7.5px,.75vw,10px);width:38em;height:50em;flex:0 0 auto;font-family:var(--font-body,system-ui,sans-serif);will-change:transform}
 .rtablet,.rtablet *{box-sizing:border-box}
@@ -644,7 +629,6 @@ details p{margin-top:12px;color:var(--text-muted);font-size:.95rem;line-height:1
 
 /* CTA + FOOTER */
 .cta-section{background:var(--purple-deep);padding:110px 5vw;text-align:center;position:relative;overflow:hidden;color:#fff}
-.cta-section .hero-grid{opacity:1}
 .cta-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:18px;position:relative}
 .cta-title em{font-style:italic;color:var(--purple-accent)}
 .cta-body{max-width:480px;margin:0 auto;color:rgba(255,255,255,.65);line-height:1.7;position:relative}
@@ -663,7 +647,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
-  .dot,.aurora,.float-card{animation:none}
+  .dot,.float-card{animation:none}
   .hero-content > *,.slot-tablet,.slot-phone{animation:none}
   .phone,.tablet{transition:none;transform:none}
   html{scroll-behavior:auto}
@@ -701,8 +685,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 
 <main>
 <section class="hero">
-  <div class="hero-aurora"><span class="aurora aurora-1"></span><span class="aurora aurora-2"></span></div>
-  <div class="hero-grid"></div>
   <div class="hero-noise"></div>
 
   <div class="container hero-layout">
@@ -989,16 +971,16 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
                     <div class="rt-box rt-outcome">
                       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
                       <span class="rt-lab">Outcome</span>
-                      <p class="rt-txt">Your symptoms are most consistent with a viral upper respiratory tract infection. No signs today to suggest a bacterial infection.</p>
-                      <p class="rt-txt muted">You should expect gradual improvement over the next 5–7 days. If symptoms worsen or persist beyond 10 days, please return for a follow-up.</p>
+                      <p class="rt-txt">Viral upper respiratory tract infection. No signs of bacterial infection — antibiotics are not indicated.</p>
+                      <p class="rt-txt muted">Expect gradual improvement over 5–7 days. Return if symptoms worsen or persist beyond 10 days.</p>
                     </div>
                     <div class="rt-box rt-plan">
                       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4.5" width="12" height="16" rx="2"/><path d="M9.5 4.5v-1h5v1"/><path d="M9.5 11h5M9.5 14.5h5"/></svg></span>
                       <span class="rt-lab">Plan</span>
                       <ul class="rt-list">
-                        <li>Continue current medications as prescribed.</li>
                         <li>Rest, stay hydrated, and eat light meals.</li>
-                        <li>Use a humidifier or take steam inhalation if needed.</li>
+                        <li>Use saline nasal rinse or steam inhalation.</li>
+                        <li>Paracetamol for pain or fever as needed.</li>
                       </ul>
                     </div>
                   </div>
@@ -1007,13 +989,13 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
                     <div class="rt-box rt-rx">
                       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></g></svg></span>
                       <span class="rt-lab">Prescription</span>
-                      <div class="rt-drug"><b>Ofloxacin</b><span>500mg · 2 x daily · 10 days</span></div>
-                      <div class="rt-drug"><b>Panadol</b><span>500mg · 2 x daily · 5 days</span></div>
+                      <div class="rt-drug"><b>Paracetamol</b><span>1g · up to 3 x daily · as needed</span></div>
+                      <div class="rt-drug"><b>Saline rinse</b><span>2 x daily · as needed</span></div>
                     </div>
                     <div class="rt-box rt-fu">
                       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span>
                       <span class="rt-lab">Follow-up</span>
-                      <p class="rt-txt">Schedule a follow-up consultation in 10 days or sooner if you develop fever, shortness of breath, chest pain, or if symptoms worsen.</p>
+                      <p class="rt-txt">Return if symptoms worsen, do not improve in 10 days, or if you develop fever, shortness of breath, or chest pain.</p>
                     </div>
                   </div>
                 </div>
@@ -1068,31 +1050,31 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
               <div class="rp-box rp-outcome">
                 <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
                 <span class="rp-lab">Outcome</span>
-                <p class="rp-txt">Your symptoms are most consistent with a viral upper respiratory tract infection. No signs today to suggest a bacterial infection.</p>
-                <p class="rp-txt muted">You should expect gradual improvement over the next 5–7 days. If symptoms worsen or persist beyond 10 days, please return for a follow-up.</p>
+                <p class="rp-txt">Viral upper respiratory tract infection. No signs of bacterial infection — antibiotics are not indicated.</p>
+                <p class="rp-txt muted">Expect gradual improvement over 5–7 days. Return if symptoms worsen or persist beyond 10 days.</p>
               </div>
     
               <div class="rp-box rp-plan">
                 <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4.5" width="12" height="16" rx="2"/><path d="M9.5 4.5v-1h5v1"/><path d="M9.5 11h5M9.5 14.5h5"/></svg></span>
                 <span class="rp-lab">Plan</span>
                 <ul class="rp-list">
-                  <li>Continue current medications as prescribed.</li>
                   <li>Rest, stay hydrated, and eat light meals.</li>
-                  <li>Use a humidifier or take steam inhalation if needed.</li>
+                  <li>Use saline nasal rinse or steam inhalation.</li>
+                  <li>Paracetamol for pain or fever as needed.</li>
                 </ul>
               </div>
     
               <div class="rp-box rp-rx">
                 <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></g></svg></span>
                 <span class="rp-lab">Prescription</span>
-                <div class="rp-drug"><b>Ofloxacin</b><span>500mg · 2 x daily · 10 days</span></div>
-                <div class="rp-drug"><b>Panadol</b><span>500mg · 2 x daily · 5 days</span></div>
+                <div class="rp-drug"><b>Paracetamol</b><span>1g · up to 3 x daily · as needed</span></div>
+                <div class="rp-drug"><b>Saline rinse</b><span>2 x daily · as needed</span></div>
               </div>
     
               <div class="rp-box rp-fu">
                 <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span>
                 <span class="rp-lab">Follow-up</span>
-                <p class="rp-txt">Schedule a follow-up consultation in 10 days or sooner if you develop fever, shortness of breath, chest pain, or if symptoms worsen.</p>
+                <p class="rp-txt">Return if symptoms worsen, do not improve in 10 days, or if you develop fever, shortness of breath, or chest pain.</p>
               </div>
             </div>
           </div>
@@ -1281,7 +1263,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 </section>
 
 <section class="cta-section" id="download">
-  <div class="hero-grid"></div>
   <h2 class="cta-title">Your doctor is<br>one tap <em>away.</em></h2>
   <p class="cta-body">Download YerosCare for patients and doctors. Available on Android and iPhone.</p>
   <div class="hero-actions">
