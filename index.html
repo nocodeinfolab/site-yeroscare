@@ -34,7 +34,6 @@ a{color:inherit}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;background:rgba(250,248,253,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand)}
 .nav-logo{display:inline-flex;align-items:center;text-decoration:none;flex:0 0 auto;transition:opacity .2s}
 .nav-logo img{display:block;height:60px;width:auto}
-
 .nav-logo:hover{opacity:.82}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
 .nav-links a{font-size:.9rem;font-weight:500;color:var(--text-mid);text-decoration:none}
@@ -439,6 +438,201 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .split-devices > .rp-stage{order:2}
 }
 
+/* ============================================
+   DOCTORS — hero with shareable doctor card
+   ============================================ */
+.doctors-hero{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:40px;
+  align-items:center;
+  margin-bottom:56px;
+}
+.doctors-hero .section-lead{margin-bottom:0}
+.doctors-hero .section-title{margin-bottom:20px}
+
+@media (min-width:900px){
+  .doctors-hero{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:56px;
+    margin-bottom:72px;
+  }
+}
+
+/* wrapper + glow */
+.doc-card-wrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:8px 0;
+}
+.doc-card-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-8% -4%;
+  background:radial-gradient(closest-side,rgba(139,92,246,.35),rgba(139,92,246,0) 72%);
+  filter:blur(8px);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* the card */
+.doc-card{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:560px;
+  padding:22px;
+  border-radius:22px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:13px;
+  background:
+    radial-gradient(75% 85% at 105% 5%, rgba(139,92,246,.38) 0%, transparent 55%),
+    radial-gradient(70% 80% at -5% 105%, rgba(120,54,220,.22) 0%, transparent 60%),
+    linear-gradient(135deg, #4a1e88 0%, #2d1467 55%, #1a0642 100%);
+  box-shadow:
+    0 30px 60px -22px rgba(20,6,52,.75),
+    0 0 0 1px rgba(167,139,250,.16),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+.doc-card::before{
+  /* faint grid to echo the hero */
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 20%,transparent 85%);
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 20%,transparent 85%);
+  pointer-events:none;
+}
+
+@media (min-width:900px){
+  .doc-card{
+    aspect-ratio:19/10;
+    padding:clamp(22px,2.2vw,32px);
+    font-size:clamp(10px,1vw,14px);
+    gap:0;
+    justify-content:space-between;
+  }
+}
+
+/* top row */
+.doc-card-top{position:relative;z-index:1;display:flex;flex-direction:column;gap:.4em}
+.doc-card-brand{
+  font-family:var(--font-display,Georgia,serif);
+  font-size:1.85em;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1;
+  color:#f5e4b4;
+}
+.doc-card-tagline{
+  font-family:var(--font-mono);
+  font-size:.7em;
+  letter-spacing:.13em;
+  color:rgba(232,201,122,.78);
+}
+
+/* middle row: avatar + info */
+.doc-card-middle{
+  position:relative;z-index:1;
+  display:flex;
+  align-items:center;
+  gap:1.15em;
+  min-width:0;
+}
+.doc-card-avatar{
+  position:relative;
+  flex:0 0 auto;
+  width:5.4em;
+  height:5.4em;
+  border-radius:50%;
+  padding:.22em;
+  background:linear-gradient(135deg,#f8e9bf 0%,#d9ae53 55%,#b98a2c 100%);
+  box-shadow:
+    0 0 0 .15em rgba(232,201,122,.18),
+    0 .8em 1.4em -.5em rgba(0,0,0,.45);
+}
+.doc-card-avatar img{
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+}
+.doc-card-info{display:flex;flex-direction:column;gap:.28em;min-width:0;flex:1 1 auto}
+.doc-card-name{
+  font-family:var(--font-display,Georgia,serif);
+  font-size:1.85em;
+  font-weight:700;
+  letter-spacing:-.015em;
+  line-height:1.05;
+  color:#f5e4b4;
+}
+.doc-card-role{
+  font-size:1em;
+  color:rgba(255,255,255,.9);
+  font-weight:500;
+}
+.doc-card-exp{
+  font-size:.8em;
+  color:rgba(214,203,246,.55);
+  margin-bottom:.25em;
+}
+.doc-card-verified{
+  display:inline-flex;
+  align-items:center;
+  gap:.4em;
+  align-self:flex-start;
+  padding:.35em .9em;
+  border-radius:100px;
+  background:linear-gradient(135deg,#24c9a0 0%,#16a883 100%);
+  color:#fff;
+  font-size:.7em;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow:0 .35em .9em -.35em rgba(34,199,154,.65);
+}
+.doc-card-verified svg{width:1em;height:1em;flex:0 0 auto}
+
+/* bottom row: footer + QR */
+.doc-card-bottom{
+  position:relative;z-index:1;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:1em;
+}
+.doc-card-footer{
+  font-family:var(--font-mono);
+  font-size:.82em;
+  letter-spacing:.1em;
+  line-height:1.35;
+  color:#f5e4b4;
+  max-width:60%;
+  padding-bottom:.3em;
+}
+.doc-card-qr{
+  flex:0 0 auto;
+  width:6.4em;
+  height:6.4em;
+  padding:.5em;
+  background:#fff;
+  border-radius:.9em;
+  box-shadow:0 .9em 1.6em -.55em rgba(0,0,0,.55);
+}
+.doc-card-qr svg{display:block;width:100%;height:100%}
+
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}
 details{border-bottom:1px solid var(--sand);padding:20px 0}
@@ -485,7 +679,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-outline{width:100%;max-width:340px;justify-content:center;margin:0 auto}
   .hero-meta{font-size:.74rem}
-
 }
 </style>
 </head>
@@ -919,9 +1112,64 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 <!-- DOCTORS -->
 <section class="section section-dark" id="doctors">
   <div class="inner">
-    <div class="section-eyebrow reveal">For doctors</div>
-    <h2 class="section-title reveal">Turn enquiries into<br>paid consultations</h2>
-    <p class="section-lead reveal">Practise on your terms. You decide when you work, what you offer and what you charge. We bring the patients and handle the payments.</p>
+
+    <!-- header + shareable card -->
+    <div class="doctors-hero">
+      <div>
+        <div class="section-eyebrow reveal">For doctors</div>
+        <h2 class="section-title reveal">Turn enquiries into<br>paid consultations</h2>
+        <p class="section-lead reveal">Practise on your terms. You decide when you work, what you offer and what you charge. We bring the patients and handle the payments.</p>
+      </div>
+
+      <div class="doc-card-wrap reveal">
+        <div class="doc-card" role="img" aria-label="Example of a shareable doctor card: Dr Stephen Umana, verified General Practitioner, with QR code to book">
+          <div class="doc-card-top">
+            <div class="doc-card-brand">YerosCare</div>
+            <div class="doc-card-tagline">Trusted care. Delivered digitally</div>
+          </div>
+
+          <div class="doc-card-middle">
+            <div class="doc-card-avatar">
+              <img src="/images/stephen-umana.jpg" alt="" width="240" height="240" />
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-name">Dr. Stephen Umana</div>
+              <div class="doc-card-role">General Practitioner</div>
+              <div class="doc-card-exp">4 years of experience</div>
+              <div class="doc-card-verified">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                Verified
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-card-bottom">
+            <div class="doc-card-footer">Scan or tap to book with me</div>
+            <div class="doc-card-qr">
+              <svg viewBox="0 0 25 25" shape-rendering="crispEdges" aria-hidden="true">
+                <rect width="25" height="25" fill="#fff"/>
+                <g fill="#0b0b12">
+                  <!-- Finder patterns -->
+                  <path d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2z"/>
+                  <path d="M18 0h7v7h-7zM19 1v5h5V1zM20 2h3v3h-3z"/>
+                  <path d="M0 18h7v7H0zM1 19v5h5V19zM2 20h3v3H2z"/>
+                  <!-- Timing -->
+                  <path d="M8 6h1v1H8zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1z"/>
+                  <path d="M6 8h1v1H6zM6 10h1v1H6zM6 12h1v1H6zM6 14h1v1H6zM6 16h1v1H6z"/>
+                  <!-- Data -->
+                  <path d="M8 8h2v1H8zM11 8h1v2h-1zM13 9h2v1h-2zM16 8h1v1h-1zM8 10h1v1H8zM10 10h1v1h-1zM12 11h1v1h-1zM14 11h2v1h-2zM17 10h1v2h-1zM8 12h1v1H8zM10 13h2v1h-2zM13 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1z"/>
+                  <path d="M8 15h1v2H8zM10 15h2v1h-2zM13 16h1v1h-1zM15 15h1v1h-1zM17 16h1v1h-1zM8 18h1v1H8zM10 19h2v1h-2zM13 18h1v1h-1zM15 18h2v1h-2z"/>
+                  <path d="M10 21h1v1h-1zM12 21h2v1h-2zM15 21h1v1h-1zM17 21h1v1h-1zM8 22h1v1H8zM11 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1z"/>
+                  <path d="M19 8h1v1h-1zM21 8h2v1h-2zM20 10h1v1h-1zM22 10h1v1h-1zM19 12h2v1h-2zM22 12h1v1h-1zM20 14h1v1h-1zM22 14h1v1h-1z"/>
+                  <path d="M19 16h1v1h-1zM21 17h2v1h-2zM19 19h2v1h-2zM22 19h1v1h-1zM20 21h1v1h-1zM22 22h1v1h-1z"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="feature-grid">
       <div class="feature reveal"><div class="feature-icon">📧</div><div><h3>Join in minutes</h3><p>Log in with your email, add your professional details and MDCN license number, and we'll verify it.</p></div></div>
       <div class="feature reveal"><div class="feature-icon">🗓️</div><div><h3>Set your own schedule</h3><p>Choose your working days and hours. Patients see them as your availability and book inside those slots.</p></div></div>
