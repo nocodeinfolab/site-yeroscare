@@ -144,7 +144,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
 /* PHONE MOCKUP (em-based: change .phone font-size to scale) */
-.phone{--ink:#1a0b2e;--violet:#4a2a9a;--muted:#5b6190;position:relative;z-index:2;font-size:clamp(7.5px,3vw,11px);width:30em;height:53em;flex:0 0 auto;font-family:var(--font-body,system-ui,-apple-system,'Segoe UI',sans-serif);will-change:transform}
+.phone{--ink:#1a0b2e;--violet:#4a2a9a;--muted:#5b6190;position:relative;z-index:2;font-size:clamp(7px,2.8vw,11px);width:30em;height:53em;flex:0 0 auto;font-family:var(--font-body,system-ui,-apple-system,'Segoe UI',sans-serif);will-change:transform}
 .phone,.phone *{box-sizing:border-box}
 .side-btn{position:absolute;width:.28em;background:#8a8f9e;border-radius:.2em}
 .sb-1{left:-.2em;top:9.6em;height:2.2em}.sb-2{left:-.2em;top:13.2em;height:4em}.sb-3{left:-.2em;top:18.2em;height:4em}.sb-4{right:-.2em;top:14.5em;height:6.4em}
@@ -427,7 +427,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 @media (min-width:900px){
   .rtablet{display:block;margin-right:-3.2em;transform:translateY(-1.4em)}
-  .rphone{font-size:clamp(6px,.6vw,8.5px)}
+  .rphone{font-size:clamp(7px,.62vw,8.5px)}
+}
+
+/* MOBILE ORDER: copy first, then the device mockup */
+@media (max-width:899px){
+  .split-devices > .records-copy{order:1}
+  .split-devices > .rp-stage{order:2}
 }
 
 /* FAQ */
@@ -878,7 +884,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
       </div>
 
     </div>
-    <div>
+    <div class="records-copy">
       <div class="section-eyebrow reveal">Your records</div>
       <h2 class="section-title reveal">Your health records,<br>in your pocket.</h2>
       <p class="lead-text reveal">After your consultation, everything is saved securely in the app.</p>
