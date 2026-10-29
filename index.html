@@ -308,9 +308,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .section-cta .btn-primary{color:#1c0b38}
 
 /* RECORDS PHONE (em-based: change .rphone font-size to scale the whole phone) */
-.rp-stage{position:relative;display:flex;justify-content:center;padding:12px 0}
-.rp-stage::before{content:'';position:absolute;inset:-4% 0;background:radial-gradient(closest-side,rgba(167,139,250,.38),rgba(167,139,250,0) 72%);pointer-events:none}
-.rphone{--ink:#1a0b2e;position:relative;z-index:1;font-size:min(10px,2.8vw);width:30em;height:66em;flex:0 0 auto;font-family:var(--font-body,system-ui,-apple-system,'Segoe UI',sans-serif)}
+.rp-stage{position:relative;display:flex;justify-content:center;align-items:center;padding:12px 0}
+.rp-stage::before{content:'';position:absolute;inset:-4% -6%;background:radial-gradient(closest-side,rgba(167,139,250,.32),rgba(167,139,250,0) 72%);pointer-events:none}
+.rphone{--ink:#1a0b2e;position:relative;z-index:2;font-size:min(10px,2.8vw);width:30em;height:66em;flex:0 0 auto;font-family:var(--font-body,system-ui,-apple-system,'Segoe UI',sans-serif)}
 .rphone,.rphone *{box-sizing:border-box}
 .rp-btn{position:absolute;right:-.22em;width:.3em;background:#2b2d36;border-radius:.2em}
 .rp-b1{top:13em;height:3em}.rp-b2{top:18.5em;height:5.5em}
@@ -369,7 +369,67 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .rp-ico{position:relative;display:inline-flex}
 .rp-badge{position:absolute;top:-.5em;right:-.8em;min-width:1.7em;height:1.7em;border-radius:1em;background:#ef3b3b;color:#fff;font-size:.8em;font-weight:700;display:flex;align-items:center;justify-content:center}
 @media (prefers-reduced-motion:reduce){.rp-stage{transition:none}}
-  
+
+/* RECORDS TABLET (em-based) */
+@media (min-width:900px){.split-devices{grid-template-columns:1.28fr .72fr;gap:48px}}
+.rtablet{display:none;position:relative;z-index:1;font-size:clamp(7.5px,.75vw,10px);width:38em;height:50em;flex:0 0 auto;font-family:var(--font-body,system-ui,sans-serif);will-change:transform}
+.rtablet,.rtablet *{box-sizing:border-box}
+.rt-frame{position:absolute;inset:0;border-radius:2.4em;padding:.35em;background:linear-gradient(150deg,#e9ecf3 0%,#787d8f 30%,#d9dde7 56%,#545968 100%);box-shadow:0 2em 4em -1em rgba(42,17,99,.45),0 0 0 .1em rgba(255,255,255,.06)}
+.rt-bezel{position:relative;width:100%;height:100%;border-radius:2.15em;background:#050507;padding:.85em}
+.rt-cam{position:absolute;top:.35em;left:50%;transform:translateX(-50%);width:.32em;height:.32em;border-radius:50%;background:#171b26;box-shadow:inset 0 0 0 .06em #2a3040}
+.rt-screen{position:relative;width:100%;height:100%;border-radius:1.6em;overflow:hidden;background:#f7f5fc;display:flex;flex-direction:column;color:#1a0b2e;line-height:1.3;text-align:left}
+.rt-header{flex:0 0 auto;padding:1.9em 1.2em .95em;color:#fff;background:linear-gradient(160deg,#4a2a9a 0%,#3c2185 100%)}
+.rt-eyebrow{font-size:.72em;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.92}
+.rt-title{font-family:var(--font-display,Georgia,serif);font-size:1.55em;font-weight:700;line-height:1.15;margin-top:.15em}
+.rt-sub{font-size:.74em;margin-top:.5em;opacity:.9;max-width:32em}
+.rt-body{flex:1 1 auto;min-height:0;padding:.8em .8em 0;display:flex;flex-direction:column;gap:.7em}
+.rt-tabs{flex:0 0 auto;display:flex;align-items:center;height:2.9em;padding:.3em;border-radius:1.5em;background:#ece9f7}
+.rt-tab{flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:.45em;height:100%;border-radius:1.2em;font-size:.86em;font-weight:600;color:#3d2b8f;white-space:nowrap}
+.rt-tab.on{background:#fff;color:#6d28d9;box-shadow:0 .1em .5em rgba(40,20,90,.12)}
+.rt-count{min-width:1.75em;height:1.75em;padding:0 .35em;border-radius:1em;background:#dcd8ec;color:#4b4880;font-size:.9em;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+.rt-tab.on .rt-count{background:#e9e2fb;color:#6d28d9}
+.rt-card{flex:1 1 auto;min-height:0;overflow:hidden;padding:.95em .95em .85em;border-radius:1.1em;background:#fff;box-shadow:0 .1em .5em rgba(40,20,90,.06);display:flex;flex-direction:column}
+.rt-dtop{display:flex;align-items:center;justify-content:space-between;gap:.8em}
+.rt-dname{font-size:1.15em;font-weight:700;color:#1a0b2e}
+.rt-chip{display:inline-flex;align-items:center;gap:.4em;padding:.45em .85em;border-radius:2em;background:#e1f5ec;color:#168a5f;font-size:.66em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.rt-chip svg{width:1.25em;height:1.25em}
+.rt-dsub{font-size:.76em;color:#5a60a0;margin-top:.4em}
+.rt-notes{display:flex;align-items:center;gap:.6em;height:2.6em;margin-top:.75em;padding:0 .85em;border-radius:.8em;background:#efeafc;color:#5b34c4;font-size:.86em;font-weight:700}
+.rt-notes .ico{flex:0 0 auto;width:1.5em;height:1.5em;border-radius:.4em;background:#5b34c4;display:flex;align-items:center;justify-content:center}
+.rt-notes .ico svg{width:.9em;height:.9em}
+.rt-notes .chev{margin-left:auto;width:1.15em;height:1.15em}
+.rt-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7em;margin-top:.75em;flex:1 1 auto;min-height:0}
+.rt-col{display:flex;flex-direction:column;gap:.7em}
+.rt-box{display:grid;grid-template-columns:1.65em 1fr;column-gap:.6em;padding:.7em .7em .75em;border-radius:.9em}
+.rt-box .ico{width:1.65em;height:1.65em;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff}
+.rt-box .ico svg{width:.9em;height:.9em}
+.rt-lab{font-size:.72em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;align-self:center;line-height:2.1}
+.rt-txt{grid-column:2;font-size:.82em;line-height:1.55;color:#1c1236;margin-top:.15em}
+.rt-txt.muted{font-size:.72em;line-height:1.5;color:#7a80a3;margin-top:.45em}
+.rt-outcome{background:#e9f7f1}.rt-outcome .ico{background:#16955f}.rt-outcome .rt-lab{color:#16855a}
+.rt-plan{background:#efeafc}.rt-plan .ico{background:#5b34c4}.rt-plan .rt-lab{color:#5b34c4}
+.rt-rx{background:#eaf2fd}.rt-rx .ico{background:#2f63c9}.rt-rx .rt-lab{color:#2f63c9}
+.rt-fu{background:#efeafc}.rt-fu .ico{background:#5b34c4}.rt-fu .rt-lab{color:#5b34c4}
+.rt-list{grid-column:2;list-style:none;margin:.2em 0 0;padding:0}
+.rt-list li{position:relative;padding-left:1.25em;font-size:.74em;line-height:1.9;color:#1c1236}
+.rt-list li::before{content:'';position:absolute;left:.15em;top:.75em;width:.38em;height:.38em;border-radius:50%;background:#5b34c4}
+.rt-drug{grid-column:2;display:flex;align-items:baseline;justify-content:space-between;gap:.5em;padding:.5em 0}
+.rt-drug + .rt-drug{border-top:1px solid #d3dff3}
+.rt-drug b{font-size:.88em;font-weight:700;color:#1a0b2e}
+.rt-drug span{font-size:.68em;color:#4a4f78;white-space:nowrap}
+.rt-tabbar{flex:0 0 auto;height:4.4em;display:flex;justify-content:space-around;background:#fff;border-top:1px solid #ece9f6}
+.rt-ti{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:.25em;padding-top:.85em;font-size:.7em;color:#2b2750}
+.rt-ti svg{width:2.1em;height:2.1em}
+.rt-ti.on{color:#6d28d9;font-weight:600}
+.rt-ti.on::before{content:'';position:absolute;top:-1px;left:50%;width:3em;height:.3em;margin-left:-1.5em;border-radius:0 0 .3em .3em;background:#5b34c4}
+.rt-ico{position:relative;display:inline-flex}
+.rt-badge{position:absolute;top:-.5em;right:-.8em;min-width:1.6em;height:1.6em;border-radius:1em;background:#ef3b3b;color:#fff;font-size:.8em;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+@media (min-width:900px){
+  .rtablet{display:block;margin-right:-3.2em;transform:translateY(-1.4em)}
+  .rphone{font-size:clamp(6px,.6vw,8.5px)}
+}
+
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}
 details{border-bottom:1px solid var(--sand);padding:20px 0}
@@ -658,8 +718,90 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 
 <!--  medical records -->
 <section class="section">
-  <div class="inner split">
+  <div class="inner split split-devices">
     <div class="rp-stage reveal">
+
+      <!-- ---------- RECORDS TABLET ---------- -->
+      <div class="rtablet" role="img" aria-label="The YerosCare tablet app showing the same completed voice consultation record for Dr Stephen Umana, with outcome, plan, prescription and follow-up notes">
+        <div class="rt-frame"><div class="rt-bezel">
+          <span class="rt-cam"></span>
+          <div class="rt-screen" aria-hidden="true">
+
+            <div class="rt-header">
+              <div class="rt-eyebrow">My Care</div>
+              <div class="rt-title">Appointments &amp; Records</div>
+              <div class="rt-sub">Track your appointments and view your consultation notes.</div>
+            </div>
+
+            <div class="rt-body">
+              <div class="rt-tabs">
+                <span class="rt-tab">Upcoming <b class="rt-count">4</b></span>
+                <span class="rt-tab">Confirmed <b class="rt-count">31</b></span>
+                <span class="rt-tab on">Completed <b class="rt-count">11</b></span>
+              </div>
+
+              <div class="rt-card">
+                <div class="rt-dtop">
+                  <div class="rt-dname">Dr Stephen Umana</div>
+                  <span class="rt-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Completed</span>
+                </div>
+                <div class="rt-dsub">Voice Consultation · Aug 23, 2026, 03:18 PM</div>
+
+                <div class="rt-notes">
+                  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13H7z"/><path d="M14 3v4h4"/><path d="M9.8 14.2l1.8 1.8 3.2-3.4"/></svg></span>
+                  <span>Hide notes</span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+                </div>
+
+                <div class="rt-grid">
+                  <div class="rt-col">
+                    <div class="rt-box rt-outcome">
+                      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                      <span class="rt-lab">Outcome</span>
+                      <p class="rt-txt">Your symptoms are most consistent with a viral upper respiratory tract infection. No signs today to suggest a bacterial infection.</p>
+                      <p class="rt-txt muted">You should expect gradual improvement over the next 5–7 days. If symptoms worsen or persist beyond 10 days, please return for a follow-up.</p>
+                    </div>
+                    <div class="rt-box rt-plan">
+                      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4.5" width="12" height="16" rx="2"/><path d="M9.5 4.5v-1h5v1"/><path d="M9.5 11h5M9.5 14.5h5"/></svg></span>
+                      <span class="rt-lab">Plan</span>
+                      <ul class="rt-list">
+                        <li>Continue current medications as prescribed.</li>
+                        <li>Rest, stay hydrated, and eat light meals.</li>
+                        <li>Use a humidifier or take steam inhalation if needed.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="rt-col">
+                    <div class="rt-box rt-rx">
+                      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></g></svg></span>
+                      <span class="rt-lab">Prescription</span>
+                      <div class="rt-drug"><b>Ofloxacin</b><span>500mg · 2 x daily · 10 days</span></div>
+                      <div class="rt-drug"><b>Panadol</b><span>500mg · 2 x daily · 5 days</span></div>
+                    </div>
+                    <div class="rt-box rt-fu">
+                      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span>
+                      <span class="rt-lab">Follow-up</span>
+                      <p class="rt-txt">Schedule a follow-up consultation in 10 days or sooner if you develop fever, shortness of breath, chest pain, or if symptoms worsen.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rt-tabbar">
+              <div class="rt-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7.5 9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg><span>Home</span></div>
+              <div class="rt-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></svg><span>Find Care</span></div>
+              <div class="rt-ti on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.5s-8.5-5.2-8.5-11A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.7c0 5.8-8.5 11-8.5 11z"/></svg><span>My Care</span></div>
+              <div class="rt-ti"><span class="rt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg><b class="rt-badge">5</b></span><span>Messages</span></div>
+              <div class="rt-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1-4 4-5.8 7.5-5.8s6.5 1.8 7.5 5.8"/></svg><span>Profile</span></div>
+            </div>
+
+          </div>
+        </div></div>
+      </div>
+
+      <!-- ---------- RECORDS PHONE ---------- -->
       <div class="rphone" role="img" aria-label="The YerosCare My Care screen showing a completed voice consultation with Dr Stephen Umana, with the outcome, plan, prescription and follow-up notes">
         <span class="rp-btn rp-b1"></span><span class="rp-btn rp-b2"></span>
         <div class="rp-frame"><div class="rp-bezel"><div class="rp-screen" aria-hidden="true">
@@ -734,6 +876,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
     
         </div></div></div>
       </div>
+
     </div>
     <div>
       <div class="section-eyebrow reveal">Your records</div>
@@ -842,8 +985,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   const burger = document.getElementById('burger'), links = document.getElementById('navlinks');
   burger.addEventListener('click', () => burger.setAttribute('aria-expanded', links.classList.toggle('open')));
   links.addEventListener('click', e => { if (e.target.tagName === 'A') { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
-
-  
 </script>
 </body>
 </html>
