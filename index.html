@@ -283,7 +283,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .plan-comm strong{font-size:1.4rem;font-family:var(--font-display)}
 .plan-note{font-size:.82rem;opacity:.65;margin-top:6px}
 .fine{margin-top:28px;font-size:.88rem;color:rgba(255,255,255,.6);max-width:720px;line-height:1.7}
-
+.split{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+@media (min-width:900px){.split{grid-template-columns:1.1fr .9fr;gap:64px}}
+.stage-badge{display:inline-block;margin-bottom:18px;padding:7px 16px;border-radius:100px;background:var(--purple-light);color:var(--purple-mid);font:500 .72rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
+.lead-text{font-size:1.15rem;color:var(--text-mid);line-height:1.7;margin-bottom:18px;max-width:560px}
+.split p{color:var(--text-muted);line-height:1.7;max-width:560px}
+.split p + p{margin-top:14px}
+.split p strong{color:var(--text-dark)}
+.split .hero-actions{margin-top:28px}
+.triage-card{background:var(--purple-light);border:1px solid var(--sand);border-radius:28px;padding:36px 32px}
+.triage-card .q{background:#fff;border-radius:16px;padding:14px 18px;font-size:.95rem;color:var(--text-dark);box-shadow:0 2px 10px rgba(40,20,90,.06);margin-bottom:12px;max-width:88%}
+.triage-card .a{background:var(--purple-deep);color:#fff;border-radius:16px;padding:14px 18px;font-size:.95rem;margin:0 0 12px auto;max-width:78%}
+.triage-card .match{margin-top:20px;padding-top:18px;border-top:1px solid var(--sand);font-size:.88rem;color:var(--purple-mid);font-weight:600}
+.benefit-list{list-style:none;display:grid;gap:16px;margin-top:24px}
+.benefit-list li{position:relative;padding-left:32px;color:var(--text-muted);line-height:1.65;font-size:.98rem}
+.benefit-list li::before{content:'✓';position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--purple-light);color:var(--purple-soft);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.benefit-list strong{color:var(--text-dark)}
+.records-card{background:var(--purple-light);border:1px solid var(--sand);border-radius:28px;padding:32px;display:grid;gap:14px}
+.records-item{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 2px 10px rgba(40,20,90,.06)}
+.records-item small{display:block;font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-soft);margin-bottom:6px}
+.records-item span{font-size:.92rem;color:var(--text-dark)}
+.reassure{max-width:680px;margin:40px auto 0;padding:22px 26px;border-radius:20px;background:var(--purple-light);border:1px solid var(--sand);text-align:left;color:var(--text-mid);font-size:.95rem;line-height:1.7}
+.reassure strong{color:var(--purple-deep)}
+.section-cta{text-align:center}
+.section-cta .hero-actions{justify-content:center}
+.section-cta .section-lead{margin-left:auto;margin-right:auto;margin-bottom:0}
+.section-cta .btn-primary{color:#1c0b38}
+  
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}
 details{border-bottom:1px solid var(--sand);padding:20px 0}
@@ -533,32 +559,72 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 </section>
 
 <!-- PATIENTS -->
+<!-- AWARENESS: why should I care? -->
 <section class="section" id="patients">
-  <div class="inner">
-    <div class="section-eyebrow reveal">For patients</div>
-    <h2 class="section-title reveal">See the right doctor,<br>without leaving home</h2>
-    <p class="section-lead reveal">Answer a few questions and we'll point you to the doctor or specialist who fits your situation. Then book a time that works for you.</p>
-    <div class="steps-grid">
-      <div class="step-card reveal"><div class="step-number">1</div><div class="step-title">Describe how you feel</div><p class="step-body">Our AI-guided triage asks simple questions and matches you with a suitable doctor or specialist.</p></div>
-      <div class="step-card reveal"><div class="step-number">2</div><div class="step-title">Pick a doctor and a time</div><p class="step-body">Every profile shows the services offered and the days and hours the doctor is available. Choose what suits you.</p></div>
-      <div class="step-card reveal"><div class="step-number">3</div><div class="step-title">Pay in the app</div><p class="step-body">Confirm your booking and pay securely inside the app. No cash, no transfers to chase.</p></div>
-      <div class="step-card reveal"><div class="step-number">4</div><div class="step-title">Consult, then follow up</div><p class="step-body">Meet by video, voice or chat, or book a home visit. Your notes and prescription are waiting in the app afterwards.</p></div>
+  <div class="inner split">
+    <div>
+      <span class="stage-badge reveal">Healthcare, simplified</span>
+      <h2 class="section-title reveal">Speak with a doctor online.<br>On your schedule.</h2>
+      <p class="lead-text reveal">No more taking a whole day off work to sit in a waiting room. Connect with trusted doctors from wherever you are in Nigeria.</p>
+      <p class="reveal">Not sure which specialist you need? Our <strong>AI-guided triage</strong> asks a few quick questions and instantly matches you with the right doctor for your symptoms.</p>
+      <div class="hero-actions reveal">
+        <a href="#download" class="btn-primary">Download the app to book</a>
+      </div>
+    </div>
+    <div class="triage-card reveal" role="img" aria-label="Example of AI-guided triage: a few short questions, then a matched doctor">
+      <div class="q">What's troubling you today?</div>
+      <div class="a">Headaches for the past week</div>
+      <div class="q">Any fever, or changes in your vision?</div>
+      <div class="a">No fever. Some blurred vision.</div>
+      <div class="match">→ Matched with a General Practitioner</div>
     </div>
   </div>
 </section>
 
+<!-- CONSIDERATION: is this right for me? -->
 <section class="section section-alt">
   <div class="inner">
-    <div class="section-eyebrow reveal">Why YerosCare</div>
-    <h2 class="section-title reveal">Care you can trust,<br>records you control</h2>
-    <p class="section-lead reveal">Everything you need before, during and after your consultation lives in one app.</p>
+    <div class="section-eyebrow reveal">Ways to consult</div>
+    <h2 class="section-title reveal">Choose how you want to consult</h2>
+    <p class="section-lead reveal">Every patient is different. So are our consultation formats.</p>
     <div class="feature-grid">
-      <div class="feature reveal"><div class="feature-icon">✅</div><div><h3>Verified doctors only</h3><p>Doctors must submit their MDCN license number. We verify it before their profile appears to patients.</p></div></div>
-      <div class="feature reveal"><div class="feature-icon">🧭</div><div><h3>Guided to the right specialist</h3><p>AI-guided triage helps you find the right type of doctor first time, so you don't waste a consultation.</p></div></div>
-      <div class="feature reveal"><div class="feature-icon">🗂️</div><div><h3>Your records, in real time</h3><p>Read your doctor's consultation notes in the app as soon as they're saved. They're yours to keep.</p></div></div>
-      <div class="feature reveal"><div class="feature-icon">💊</div><div><h3>Prescriptions you can share</h3><p>Download your prescription and send it to the pharmacy of your choice.</p></div></div>
-      <div class="feature reveal"><div class="feature-icon">📹</div><div><h3>Video, voice, chat or home visit</h3><p>Choose how you want to meet. Doctors who offer home service list the areas they cover, so you know before you book.</p></div></div>
-      <div class="feature reveal"><div class="feature-icon">🔒</div><div><h3>Sign in with your email</h3><p>Create your account with your email address and you're ready to start.</p></div></div>
+      <div class="feature reveal"><div class="feature-icon">📹</div><div><h3>Video &amp; voice calls</h3><p>Speak face-to-face or over the phone with your doctor for real-time advice and diagnosis.</p></div></div>
+      <div class="feature reveal"><div class="feature-icon">💬</div><div><h3>Secure chat</h3><p>Prefer to type? Have a text-based consultation when you don't need a visual check-up.</p></div></div>
+      <div class="feature reveal"><div class="feature-icon">🏠</div><div><h3>Home visits</h3><p>If a doctor offers home services, you'll see exactly which areas they cover before you book.</p></div></div>
+      <div class="feature reveal"><div class="feature-icon">💳</div><div><h3>Total transparency</h3><p>See your doctor's profile, the services they offer and their consultation fees upfront. No hidden charges.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!--  medical records -->
+<section class="section">
+  <div class="inner split">
+    <div class="records-card reveal" role="img" aria-label="Example of the records screen: consultation notes and a downloadable prescription">
+      <div class="records-item"><small>Consultation notes</small><span>Available as soon as your doctor saves them.</span></div>
+      <div class="records-item"><small>Prescription</small><span>Download a copy and share it with any pharmacy.</span></div>
+    </div>
+    <div>
+      <div class="section-eyebrow reveal">Your records</div>
+      <h2 class="section-title reveal">Your health records,<br>in your pocket.</h2>
+      <p class="lead-text reveal">After your consultation, everything is saved securely in the app.</p>
+      <ul class="benefit-list reveal">
+        <li><strong>Real-time notes:</strong> Access your doctor's consultation notes immediately after your session.</li>
+        <li><strong>Download prescriptions:</strong> Get a digital copy of your prescription to share with any pharmacy.</li>
+        <li><strong>Always secure:</strong> Your medical history is kept private and easily accessible when you need it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION: how do I get started? -->
+<section class="section section-alt section-cta">
+  <div class="inner">
+    <div class="section-eyebrow reveal">Get started</div>
+    <h2 class="section-title reveal">Ready to take control<br>of your health?</h2>
+    <p class="section-lead reveal">Download the YerosCare app, log in with your email, and let our AI guide you to the right doctor today.</p>
+    <div class="reassure reveal"><strong>Changed your mind?</strong> If you request a cancellation for a paid service that hasn't happened yet, we notify the doctor. If there's no response within 48 hours, your refund is processed automatically.</div>
+    <div class="hero-actions reveal">
+      <a href="#download" class="btn-primary">Download the app</a>
     </div>
   </div>
 </section>
