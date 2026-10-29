@@ -236,11 +236,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
   .slot-tablet{display:block;margin-right:-58px;margin-bottom:56px}
   .slot-phone{display:block;width:auto}
-
-  /* single composited transform per device → no nested rotation, no blur */
-  .phone{transform:translate3d(var(--dx,0px),var(--dy,0px),0);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
-  .tablet{transform:translate3d(calc(var(--dx,0px) * -1),calc(var(--dy,0px) * -1),0);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
-
   .float-card{display:flex}
 }
 
@@ -650,28 +645,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   burger.addEventListener('click', () => burger.setAttribute('aria-expanded', links.classList.toggle('open')));
   links.addEventListener('click', e => { if (e.target.tagName === 'A') { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
 
-  /* cursor parallax on the hero device cluster — integer pixels only, so text stays crisp */
-  (function () {
-    const hero = document.querySelector('.hero');
-    const visual = document.querySelector('.hero-visual');
-    if (!hero || !visual) return;
-    if (!window.matchMedia('(pointer:fine)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let raf = null;
-    const apply = (x, y) => {
-      visual.style.setProperty('--dx', Math.round(x * 18) + 'px');
-      visual.style.setProperty('--dy', Math.round(y * 14) + 'px');
-    };
-    hero.addEventListener('mousemove', e => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = null;
-        const r = hero.getBoundingClientRect();
-        apply((e.clientX - r.left) / r.width - .5, (e.clientY - r.top) / r.height - .5);
-      });
-    }, { passive: true });
-    hero.addEventListener('mouseleave', () => apply(0, 0));
-  })();
+  
 </script>
 </body>
 </html>
