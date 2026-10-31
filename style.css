@@ -731,6 +731,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   max-width:32em;margin:0 auto 24px;
 }
 .panel-doctor .panel-body{color:rgba(247,241,228,.7)}
+.panel-doctor .panel-phone{right:auto;left:5%}
 
 /* ---------- buttons ---------- */
 .btn-panel{
