@@ -676,13 +676,12 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   --panel-ink:var(--text-dark);
   --panel-fade:#ece4fc;
 
-  /* shortened stage; phone scale drops with it so the crown stays inside */
-  --stage-h:clamp(175px,20vw,235px);
-  --phone-size:5.4px;
+  /* phone scale is now the ONLY number to tune */
+  --phone-size:6.6px;
+  --stage-h:calc(var(--phone-size) * 48);
 
   box-shadow:0 26px 60px -42px rgba(42,17,99,.6);
 }
-
 .panel-patient{
   /* tuning knobs — gradient runs top → bottom of the whole panel */
   --pp-top:#eee2fd;
@@ -759,15 +758,16 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .panel-photo{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit: cover;
-  object-position:50% 16%;          /* was: center bottom — keeps the head */
+  object-fit:cover;
+  object-position:50% 16%;
   z-index:0;
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%);
   mask-image:linear-gradient(180deg,transparent 0%,#000 12%);
 }
 .panel-phone{
   position:absolute;z-index:2;
-  bottom:-20%;right:5%;
+  bottom:calc(var(--phone-size) * -9);   /* hang measured in phone-em, not % */
+  right:5%;
   font-size:var(--phone-size);
 }
 .panel-phone .phone{font-size:1em}
@@ -776,8 +776,8 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 @supports (container-type:inline-size){
   .hero-panel{
     container-type:inline-size;
-    --stage-h:40cqw;      /* was 46cqw */
-    --phone-size:.85cqw;  /* was .95cqw */
+    --phone-size:1.05cqw;                       /* was .85cqw — +24% */
+    --stage-h:calc(var(--phone-size) * 48);
   }
 }
 
@@ -843,12 +843,11 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 
 /* ---------- responsive ---------- */
 @media (max-width:979px){
-  .hero-panel{--stage-h:clamp(175px,44vw,270px);--phone-size:5.8px}
+  .hero-panel{--phone-size:6.8px}
   @supports (container-type:inline-size){
-    .hero-panel{--stage-h:50cqw;--phone-size:1.02cqw}
+    .hero-panel{--phone-size:1.2cqw}
   }
 }
-
 @media (max-width:720px){
   .benefit-arrow{display:none}
   .hero-duo{padding:104px 0 64px}
