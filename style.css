@@ -771,7 +771,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:var(--phone-size);
 }
 .panel-phone .phone{font-size:1em}
-.panel-doctor .panel-phone{right:auto;left:5%}
 
 @supports (container-type:inline-size){
   .hero-panel{
@@ -852,4 +851,117 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .benefit-arrow{display:none}
   .hero-duo{padding:104px 0 64px}
   .hero-col{gap:20px}
+}
+/* ================= DOCTOR PHONE — queue screen ================= */
+.phone--doctor .dq-header{
+  height:auto;
+  padding:0 1.2em 1em;
+  background:linear-gradient(160deg,#4a2a9a 0%,#3c2185 55%,#2a1163 100%);
+}
+
+.phone--doctor .dq-copy{margin-top:.55em}
+.phone--doctor .dq-title{
+  font-family:var(--font-display,Georgia,serif);
+  font-size:1.85em;font-weight:700;line-height:1.05;letter-spacing:-.01em;
+}
+.phone--doctor .dq-sub{
+  margin:.45em 0 0;
+  font-size:.82em;line-height:1.4;
+  color:rgba(255,255,255,.84);
+}
+.phone--doctor .dq-pills{
+  display:flex;gap:.5em;margin-top:.85em;flex-wrap:wrap;
+}
+.phone--doctor .dq-pill{
+  display:inline-flex;align-items:center;gap:.45em;
+  padding:.45em .85em;border-radius:2em;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:.8em;font-weight:600;color:#fff;
+}
+.phone--doctor .dq-dot{
+  width:.6em;height:.6em;border-radius:50%;flex:0 0 auto;
+}
+.phone--doctor .dq-dot-warn{background:#f0a53a;box-shadow:0 0 0 .18em rgba(240,165,58,.28)}
+.phone--doctor .dq-dot-ok{background:#22c39a;box-shadow:0 0 0 .18em rgba(34,195,154,.28)}
+
+/* body */
+.phone--doctor .dq-body{padding:.5em .6em 0;gap:.5em}
+.phone--doctor .dq-card{
+  padding:.85em .85em .9em;
+  display:flex;flex-direction:column;gap:.5em;
+  border-radius:1.1em;
+}
+
+/* top row */
+.phone--doctor .dq-top{display:flex;align-items:center;gap:.65em;flex-wrap:wrap}
+.phone--doctor .dq-avatar{
+  flex:0 0 3.2em;height:3.2em;border-radius:50%;
+  background:#ece2fb;color:#4a2a9a;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.92em;letter-spacing:.02em;
+}
+.phone--doctor .dq-person{flex:1 1 auto;min-width:0}
+.phone--doctor .dq-name{font-size:1.12em;font-weight:700;line-height:1.15;color:#1a0b2e}
+.phone--doctor .dq-meta{font-size:.8em;color:#5a5f86;margin-top:.15em}
+.phone--doctor .dq-chip{
+  padding:.35em .7em;border-radius:2em;white-space:nowrap;
+  background:#d9edff;color:#1a5cc4;
+  font-size:.66em;font-weight:700;letter-spacing:.02em;
+}
+
+/* info box */
+.phone--doctor .dq-info{
+  background:#f3edfd;border-radius:.85em;
+  padding:.7em .85em;display:flex;flex-direction:column;gap:.6em;
+}
+.phone--doctor .dq-info-row{display:flex;align-items:flex-start;gap:.65em}
+.phone--doctor .dq-info-ico{
+  flex:0 0 1.35em;height:1.35em;color:#4a2a9a;
+  display:flex;align-items:center;justify-content:center;margin-top:.1em;
+}
+.phone--doctor .dq-info-ico svg{width:1.35em;height:1.35em}
+.phone--doctor .dq-info-lab{
+  font-size:.66em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#3a3466;
+}
+.phone--doctor .dq-info-val{
+  font-size:.95em;font-weight:700;color:#1a0b2e;line-height:1.25;margin-top:.1em;
+}
+
+/* tags */
+.phone--doctor .dq-tags{display:flex;flex-wrap:wrap;gap:.35em}
+.phone--doctor .dq-tag{
+  padding:.3em .65em;border-radius:2em;
+  background:#efe6fc;color:#4a2a9a;
+  font-size:.72em;font-weight:500;white-space:nowrap;
+}
+
+/* description */
+.phone--doctor .dq-desc{
+  font-size:.78em;line-height:1.4;color:#2a2650;margin:0;
+}
+
+/* actions */
+.phone--doctor .dq-actions{display:flex;gap:.4em;margin-top:.25em}
+.phone--doctor .dq-btn{
+  flex:1 1 0;min-width:0;height:2.3em;
+  border-radius:1.2em;border:1.5px solid transparent;
+  font:600 .78em var(--font-body,system-ui,sans-serif);
+  padding:0 .2em;cursor:pointer;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.phone--doctor .dq-btn-primary{
+  background:#3d1a80;color:#fff;
+  box-shadow:0 .3em .7em -.35em rgba(61,26,128,.65);
+}
+.phone--doctor .dq-btn-outline{background:#fff;color:#3d1a80;border-color:#c9bce6}
+.phone--doctor .dq-btn-danger{background:#fff;color:#e23b3b;border-color:#e23b3b}
+
+/* active tab indicator */
+.phone--doctor .tab{position:relative}
+.phone--doctor .tab.active::before{
+  content:'';position:absolute;top:-.8em;left:50%;transform:translateX(-50%);
+  width:2.6em;height:.28em;border-radius:0 0 .28em .28em;
+  background:#5b34c4;
 }
