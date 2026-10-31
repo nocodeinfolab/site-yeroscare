@@ -683,7 +683,19 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   box-shadow:0 26px 60px -42px rgba(42,17,99,.6);
 }
 
-.panel-patient{background:linear-gradient(180deg,#f6f1fe 0%,#eae0fc 100%)}
+.panel-patient{
+  /* tuning knobs — gradient runs top → bottom of the whole panel */
+  --pp-top:#eee2fd;
+  --pp-bot:#d8c6f7;
+  --panel-ink:var(--text-dark);
+  background:linear-gradient(180deg,var(--pp-top) 0%,var(--pp-bot) 100%);
+}
+.panel-patient .panel-strip{
+  background:var(--pp-bot);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  border-top:0;
+}
 .panel-doctor{
   color:var(--ink-cream);
   --panel-ink:var(--ink-cream);
