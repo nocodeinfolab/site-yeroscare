@@ -633,7 +633,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .hero-duo{position:relative;padding:118px 0 84px;background:var(--cream)}
 .hero-wrap{max-width:1440px;margin:0 auto;padding:0 5vw}
 
-/* badge */
+/* ---------- badge ---------- */
 .hero-badge{display:flex;justify-content:center;margin-bottom:30px}
 .hero-badge-pill{
   display:inline-flex;align-items:center;gap:10px;
@@ -646,18 +646,40 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .hero-badge-pill .flag{display:inline-flex;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(42,17,99,.12)}
 
-/* grid */
+/* ---------- grid ----------
+   Mobile: single column, each .hero-col stacks its panel + benefit card.
+   Desktop: .hero-col goes display:contents so the two panels share row 1
+   and the two benefit cards share row 2 — heights match on both rows.     */
 .hero-pair{display:grid;grid-template-columns:1fr;gap:26px}
-@media (min-width:980px){.hero-pair{grid-template-columns:1fr 1fr;gap:24px}}
 .hero-col{display:flex;flex-direction:column;gap:26px;min-width:0}
 
-/* panel shell */
+@media (min-width:980px){
+  .hero-pair{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr auto;
+    gap:24px;
+  }
+  .hero-col{display:contents}
+
+  .hero-col:nth-child(1) .hero-panel   {grid-area:1 / 1}
+  .hero-col:nth-child(1) .benefit-card {grid-area:2 / 1}
+  .hero-col:nth-child(2) .hero-panel   {grid-area:1 / 2}
+  .hero-col:nth-child(2) .benefit-card {grid-area:2 / 2}
+}
+
+/* ---------- panel shell ---------- */
 .hero-panel{
   position:relative;isolation:isolate;
   display:flex;flex-direction:column;
   border-radius:28px;overflow:hidden;
+
   --panel-ink:var(--text-dark);
   --panel-fade:#ece4fc;
+
+  /* framing knobs — see @supports block below */
+  --stage-h:clamp(210px,24vw,290px);
+  --phone-size:6.4px;
+
   box-shadow:0 26px 60px -42px rgba(42,17,99,.6);
 }
 .panel-patient{background:linear-gradient(180deg,#f6f1fe 0%,#eae0fc 100%)}
@@ -671,9 +693,14 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
     linear-gradient(160deg,#3a1a80 0%,#2a1163 58%,#1c0846 100%);
 }
 
-/* copy */
+/* Panel is a stretched grid item on desktop, so one child must absorb the
+   height difference. The copy block does it (centred), which keeps the stage
+   — and therefore the phone framing — identical on both sides.            */
 .panel-copy{
   position:relative;z-index:4;text-align:center;
+  flex:1 1 auto;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
   padding:clamp(26px,3.2vw,42px) clamp(20px,3vw,46px) 0;
 }
 .panel-eyebrow{
@@ -693,7 +720,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .panel-doctor .panel-body{color:rgba(247,241,228,.7)}
 
-/* buttons */
+/* ---------- buttons ---------- */
 .btn-panel{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   padding:13px 26px;border-radius:100px;
@@ -710,10 +737,11 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 36px -14px rgba(201,162,92,1)}
 
-/* stage: photo + phone */
+/* ---------- stage: photo + phone ---------- */
 .panel-stage{
-  position:relative;z-index:1;flex:1 1 auto;
-  min-height:clamp(200px,23vw,290px);
+  position:relative;z-index:1;
+  flex:0 0 auto;                 /* fixed, so both stages frame identically */
+  height:var(--stage-h);
   margin-top:22px;overflow:hidden;
 }
 .panel-photo{
@@ -722,18 +750,28 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 36%);
   mask-image:linear-gradient(180deg,transparent 0%,#000 36%);
 }
-.panel-phone{position:absolute;z-index:2;bottom:-20%;right:5%;font-size:6.6px}
+.panel-phone{
+  position:absolute;z-index:2;
+  bottom:-20%;right:5%;
+  font-size:var(--phone-size);
+}
 .panel-phone .phone{font-size:1em}
 .panel-doctor .panel-phone{right:auto;left:5%}
 
+/* Phone scales with the panel's own width, not the viewport, so the framing
+   is identical at every breakpoint. Stage 46cqw + phone .95cqw leaves the
+   phone crown ~5cqw below the stage top and slices ~20% off the bottom.   */
 @supports (container-type:inline-size){
-  .hero-panel{container-type:inline-size}
-  .panel-phone{font-size:1.05cqw}
+  .hero-panel{
+    container-type:inline-size;
+    --stage-h:46cqw;
+    --phone-size:.95cqw;
+  }
 }
 
-/* strip */
+/* ---------- strip ---------- */
 .panel-strip{
-  position:relative;z-index:3;
+  position:relative;z-index:3;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;gap:14px;
   padding:13px 18px;font:600 .93rem var(--font-body);
   color:var(--panel-ink);
@@ -753,9 +791,10 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   color:#2a1163;box-shadow:0 10px 20px -10px rgba(201,162,92,.9);
 }
 
-/* benefit cards */
+/* ---------- benefit cards ---------- */
 .benefit-card{
   position:relative;text-align:center;
+  display:flex;flex-direction:column;justify-content:center;
   padding:24px clamp(18px,2.6vw,32px) 26px;
   border-radius:24px;
   background:linear-gradient(180deg,#fdfbff 0%,#f1eafd 100%);
@@ -786,7 +825,18 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   width:58px;height:42px;color:var(--purple-soft);
   pointer-events:none;
 }
-.panel-doctor ~ .benefit-card .benefit-arrow{color:var(--gold-deep)}
+/* the doctor panel is inside the second .hero-col — the old
+   `.panel-doctor ~ .benefit-card` never matched (they are not siblings)   */
+.hero-col:nth-child(2) .benefit-arrow{color:var(--gold-deep)}
+
+/* ---------- responsive ---------- */
+@media (max-width:979px){
+  /* panels are no longer height-matched here, so the stage gets more room */
+  .hero-panel{--stage-h:clamp(210px,52vw,320px);--phone-size:8px}
+  @supports (container-type:inline-size){
+    .hero-panel{--stage-h:58cqw;--phone-size:1.15cqw}
+  }
+}
 
 @media (max-width:720px){
   .benefit-arrow{display:none}
