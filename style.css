@@ -624,3 +624,172 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .btn-primary,.btn-outline{width:100%;max-width:340px;justify-content:center;margin:0 auto}
   .hero-meta{font-size:.74rem}
 }
+/* ================= HERO — dual panel ================= */
+:root{
+  --gold:#e8cf9a; --gold-soft:#f7e7c0; --gold-deep:#c9a25c;
+  --ink-cream:#f7f1e4;
+}
+
+.hero-duo{position:relative;padding:118px 0 84px;background:var(--cream)}
+.hero-wrap{max-width:1440px;margin:0 auto;padding:0 5vw}
+
+/* badge */
+.hero-badge{display:flex;justify-content:center;margin-bottom:30px}
+.hero-badge-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 20px;border-radius:100px;
+  background:var(--purple-light);
+  border:1px solid rgba(124,58,237,.14);
+  font:500 .7rem var(--font-mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--purple-mid);
+  box-shadow:inset 0 1px 0 #fff;
+}
+.hero-badge-pill .flag{display:inline-flex;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(42,17,99,.12)}
+
+/* grid */
+.hero-pair{display:grid;grid-template-columns:1fr;gap:26px}
+@media (min-width:980px){.hero-pair{grid-template-columns:1fr 1fr;gap:24px}}
+.hero-col{display:flex;flex-direction:column;gap:26px;min-width:0}
+
+/* panel shell */
+.hero-panel{
+  position:relative;isolation:isolate;
+  display:flex;flex-direction:column;
+  border-radius:28px;overflow:hidden;
+  --panel-ink:var(--text-dark);
+  --panel-fade:#ece4fc;
+  box-shadow:0 26px 60px -42px rgba(42,17,99,.6);
+}
+.panel-patient{background:linear-gradient(180deg,#f6f1fe 0%,#eae0fc 100%)}
+.panel-doctor{
+  color:var(--ink-cream);
+  --panel-ink:var(--ink-cream);
+  --panel-fade:#2b1265;
+  background:
+    radial-gradient(80% 65% at 88% 2%, #5d2eb5 0%, rgba(93,46,181,0) 58%),
+    radial-gradient(75% 60% at 0% 100%, #3a1d7d 0%, rgba(58,29,125,0) 62%),
+    linear-gradient(160deg,#3a1a80 0%,#2a1163 58%,#1c0846 100%);
+}
+
+/* copy */
+.panel-copy{
+  position:relative;z-index:4;text-align:center;
+  padding:clamp(26px,3.2vw,42px) clamp(20px,3vw,46px) 0;
+}
+.panel-eyebrow{
+  font:500 .7rem var(--font-mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-soft);margin-bottom:14px;
+}
+.panel-doctor .panel-eyebrow{color:var(--gold)}
+.panel-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.85rem,2.9vw,2.75rem);
+  font-weight:700;line-height:1.06;letter-spacing:-.025em;
+  color:var(--panel-ink);margin:0 0 16px;text-wrap:balance;
+}
+.panel-body{
+  font-size:.97rem;line-height:1.62;color:var(--text-mid);
+  max-width:32em;margin:0 auto 24px;
+}
+.panel-doctor .panel-body{color:rgba(247,241,228,.7)}
+
+/* buttons */
+.btn-panel{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:13px 26px;border-radius:100px;
+  font:600 .92rem var(--font-body);text-decoration:none;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.8,.3,1),box-shadow .25s,background .25s;
+}
+.btn-panel svg{transition:transform .25s}
+.btn-panel:hover svg{transform:translateX(3px)}
+.btn-panel-dark{background:var(--purple-deep);color:#fff;box-shadow:0 14px 28px -14px rgba(42,17,99,.85)}
+.btn-panel-dark:hover{background:var(--purple-mid);transform:translateY(-2px)}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-soft) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+  color:#2a1163;box-shadow:0 14px 28px -14px rgba(201,162,92,.95);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 36px -14px rgba(201,162,92,1)}
+
+/* stage: photo + phone */
+.panel-stage{
+  position:relative;z-index:1;flex:1 1 auto;
+  min-height:clamp(200px,23vw,290px);
+  margin-top:22px;overflow:hidden;
+}
+.panel-photo{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center bottom;z-index:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 36%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 36%);
+}
+.panel-phone{position:absolute;z-index:2;bottom:-20%;right:5%;font-size:6.6px}
+.panel-phone .phone{font-size:1em}
+.panel-doctor .panel-phone{right:auto;left:5%}
+
+@supports (container-type:inline-size){
+  .hero-panel{container-type:inline-size}
+  .panel-phone{font-size:1.05cqw}
+}
+
+/* strip */
+.panel-strip{
+  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  padding:13px 18px;font:600 .93rem var(--font-body);
+  color:var(--panel-ink);
+  background:rgba(255,255,255,.62);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-top:1px solid rgba(42,17,99,.07);
+}
+.panel-doctor .panel-strip{background:rgba(10,3,28,.32);border-top-color:rgba(255,255,255,.08)}
+.strip-btn{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--purple-deep);color:#fff;
+  box-shadow:0 10px 20px -10px rgba(42,17,99,.85);
+}
+.panel-doctor .strip-btn{
+  background:linear-gradient(135deg,var(--gold-soft),var(--gold-deep));
+  color:#2a1163;box-shadow:0 10px 20px -10px rgba(201,162,92,.9);
+}
+
+/* benefit cards */
+.benefit-card{
+  position:relative;text-align:center;
+  padding:24px clamp(18px,2.6vw,32px) 26px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#fdfbff 0%,#f1eafd 100%);
+  border:1px solid var(--sand);
+  box-shadow:0 20px 44px -36px rgba(42,17,99,.55);
+}
+.benefit-eyebrow{
+  font:500 .68rem var(--font-mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--purple-soft);margin-bottom:8px;
+}
+.benefit-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.2rem,1.8vw,1.6rem);
+  font-weight:700;line-height:1.15;letter-spacing:-.02em;
+  color:var(--text-dark);margin:0 0 10px;
+}
+.benefit-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  font-size:.88rem;color:var(--text-muted);
+}
+.benefit-meta span{display:inline-flex;align-items:center}
+.benefit-meta span + span::before{
+  content:'';width:4px;height:4px;border-radius:50%;
+  background:var(--purple-accent);opacity:.6;margin:0 12px;
+}
+.benefit-arrow{
+  position:absolute;top:-30px;left:18%;
+  width:58px;height:42px;color:var(--purple-soft);
+  pointer-events:none;
+}
+.panel-doctor ~ .benefit-card .benefit-arrow{color:var(--gold-deep)}
+
+@media (max-width:720px){
+  .benefit-arrow{display:none}
+  .hero-duo{padding:104px 0 64px}
+  .hero-col{gap:20px}
+}
