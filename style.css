@@ -1069,3 +1069,29 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .plan-btn:hover{background:#e0d0fd;transform:translateY(-1px)}
 .plan-btn svg{transition:transform .2s}
 .plan-btn:hover svg{transform:translateX(3px)}
+
+.doctor-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85); /* Brighter than default to match the headline weight */
+  padding-left: 22px;
+  border-left: 3px solid var(--purple-accent); /* Visual anchor */
+  margin-top: 28px;
+  max-width: 680px;
+}
+
+/* Styling the WhatsApp quote */
+.wa-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-soft); /* Stands out against the white text */
+  font-size: 1.1em;
+  white-space: nowrap;
+}
+
+/* On mobile, allow the quote to wrap naturally */
+@media (max-width: 600px) {
+  .wa-quote {
+    white-space: normal;
+  }
+}
