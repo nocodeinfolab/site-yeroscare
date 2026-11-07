@@ -624,7 +624,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .btn-primary,.btn-outline{width:100%;max-width:340px;justify-content:center;margin:0 auto}
   .hero-meta{font-size:.74rem}
 }
-/* ================= HERO — dual panel ================= */
+
 :root{
   --gold:#e8cf9a; --gold-soft:#f7e7c0; --gold-deep:#c9a25c;
   --ink-cream:#f7f1e4;
@@ -633,7 +633,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .hero-duo{position:relative;padding:118px 0 84px;background:var(--cream)}
 .hero-wrap{max-width:1440px;margin:0 auto;padding:0 5vw}
 
-/* ---------- badge ---------- */
+
 .hero-badge{display:flex;justify-content:center;margin-bottom:30px}
 .hero-badge-pill{
   display:inline-flex;align-items:center;gap:10px;
@@ -646,10 +646,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .hero-badge-pill .flag{display:inline-flex;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(42,17,99,.12)}
 
-/* ---------- grid ----------
-   Mobile: single column, each .hero-col stacks its panel + benefit card.
-   Desktop: .hero-col goes display:contents so the two panels share row 1
-   and the two benefit cards share row 2 — heights match on both rows.     */
+
 .hero-pair{display:grid;grid-template-columns:1fr;gap:26px}
 .hero-col{display:flex;flex-direction:column;gap:26px;min-width:0}
 
@@ -667,7 +664,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .hero-col:nth-child(2) .benefit-card {grid-area:2 / 2}
 }
 
-/* ---------- panel shell ---------- */
+
 .hero-panel{
   position:relative;isolation:isolate;
   display:flex;flex-direction:column;
@@ -676,14 +673,13 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   --panel-ink:var(--text-dark);
   --panel-fade:#ece4fc;
 
-  /* phone scale is now the ONLY number to tune */
   --phone-size:6.6px;
   --stage-h:calc(var(--phone-size) * 48);
 
   box-shadow:0 26px 60px -42px rgba(42,17,99,.6);
 }
 .panel-patient{
-  /* tuning knobs — gradient runs top → bottom of the whole panel */
+  
   --pp-top:#eee2fd;
   --pp-bot:#d8c6f7;
   --panel-ink:var(--text-dark);
@@ -705,9 +701,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
     linear-gradient(160deg,#3a1a80 0%,#2a1163 58%,#1c0846 100%);
 }
 
-/* Panel is a stretched grid item on desktop, so one child must absorb the
-   height difference. The copy block does it (centred), which keeps the stage
-   — and therefore the phone framing — identical on both sides.            */
+
 .panel-copy{
   position:relative;z-index:4;text-align:center;
   flex:1 1 auto;
@@ -733,7 +727,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .panel-doctor .panel-body{color:rgba(247,241,228,.7)}
 .panel-doctor .panel-phone{right:auto;left:5%}
 
-/* ---------- buttons ---------- */
 .btn-panel{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   padding:13px 26px;border-radius:100px;
@@ -750,7 +743,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 36px -14px rgba(201,162,92,1)}
 
-/* ---------- stage: photo + phone ---------- */
 .panel-stage{
   position:relative;z-index:1;
   flex:0 0 auto;
@@ -767,7 +759,7 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 }
 .panel-phone{
   position:absolute;z-index:2;
-  bottom:calc(var(--phone-size) * -9);   /* hang measured in phone-em, not % */
+  bottom:calc(var(--phone-size) * -9);  
   right:5%;
   font-size:var(--phone-size);
 }
@@ -776,12 +768,11 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 @supports (container-type:inline-size){
   .hero-panel{
     container-type:inline-size;
-    --phone-size:1.05cqw;                       /* was .85cqw — +24% */
+    --phone-size:1.05cqw;                      
     --stage-h:calc(var(--phone-size) * 48);
   }
 }
 
-/* ---------- strip ---------- */
 .panel-strip{
   position:relative;z-index:3;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;gap:14px;
@@ -803,7 +794,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   color:#2a1163;box-shadow:0 10px 20px -10px rgba(201,162,92,.9);
 }
 
-/* ---------- benefit cards ---------- */
 .benefit-card{
   position:relative;text-align:center;
   display:flex;flex-direction:column;justify-content:center;
@@ -837,11 +827,9 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   width:58px;height:42px;color:var(--purple-soft);
   pointer-events:none;
 }
-/* the doctor panel is inside the second .hero-col — the old
-   `.panel-doctor ~ .benefit-card` never matched (they are not siblings)   */
+
 .hero-col:nth-child(2) .benefit-arrow{color:var(--gold-deep)}
 
-/* ---------- responsive ---------- */
 @media (max-width:979px){
   .hero-panel{--phone-size:6.8px}
   @supports (container-type:inline-size){
@@ -853,7 +841,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   .hero-duo{padding:104px 0 64px}
   .hero-col{gap:20px}
 }
-/* ================= DOCTOR PHONE — queue screen ================= */
 .phone--doctor .dq-header{
   height:auto;
   padding:0 1.2em 1em;
@@ -886,7 +873,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .phone--doctor .dq-dot-warn{background:#f0a53a;box-shadow:0 0 0 .18em rgba(240,165,58,.28)}
 .phone--doctor .dq-dot-ok{background:#22c39a;box-shadow:0 0 0 .18em rgba(34,195,154,.28)}
 
-/* body */
 .phone--doctor .dq-body{padding:.5em .6em 0;gap:.5em}
 .phone--doctor .dq-card{
   padding:.85em .85em .9em;
@@ -894,7 +880,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   border-radius:1.1em;
 }
 
-/* top row */
 .phone--doctor .dq-top{display:flex;align-items:center;gap:.65em;flex-wrap:wrap}
 .phone--doctor .dq-avatar{
   flex:0 0 3.2em;height:3.2em;border-radius:50%;
@@ -911,7 +896,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:.66em;font-weight:700;letter-spacing:.02em;
 }
 
-/* info box */
 .phone--doctor .dq-info{
   background:#f3edfd;border-radius:.85em;
   padding:.7em .85em;display:flex;flex-direction:column;gap:.6em;
@@ -930,7 +914,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:.95em;font-weight:700;color:#1a0b2e;line-height:1.25;margin-top:.1em;
 }
 
-/* tags */
 .phone--doctor .dq-tags{display:flex;flex-wrap:wrap;gap:.35em}
 .phone--doctor .dq-tag{
   padding:.3em .65em;border-radius:2em;
@@ -938,12 +921,10 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:.72em;font-weight:500;white-space:nowrap;
 }
 
-/* description */
 .phone--doctor .dq-desc{
   font-size:.78em;line-height:1.4;color:#2a2650;margin:0;
 }
 
-/* actions */
 .phone--doctor .dq-actions{display:flex;gap:.4em;margin-top:.25em}
 .phone--doctor .dq-btn{
   flex:1 1 0;min-width:0;height:2.3em;
@@ -985,7 +966,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:1.05rem;line-height:1.6;color:#a395c7;margin:0;max-width:900px;
 }
 
-/* grid */
 .plans-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -993,7 +973,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   align-items:stretch;
 }
 
-/* card shell */
 .plan-card{
   display:flex;flex-direction:column;
   border-radius:16px;overflow:hidden;
@@ -1002,7 +981,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   box-shadow:0 20px 40px -20px rgba(0,0,0,.5);
 }
 
-/* card top */
 .plan-top{
   padding:24px;
   display:flex;align-items:flex-start;gap:16px;
@@ -1027,7 +1005,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:.92rem;line-height:1.35;font-weight:500;margin-top:4px;opacity:.9;
 }
 
-/* card body */
 .plan-body{
   padding:24px;display:flex;flex-direction:column;flex:1;
 }
@@ -1044,7 +1021,6 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   font-size:1.05rem;color:#c4b5fd;margin-top:12px;margin-bottom:24px;font-weight:500;
 }
 
-/* starter specific callout */
 .plan-callout{
   background:#d1bbfa;color:#1a0b2e;
   padding:16px;border-radius:12px;
@@ -1052,13 +1028,11 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   margin-bottom:24px;
 }
 
-/* pro/premium description */
 .plan-desc{
   color:#a395c7;font-size:.95rem;line-height:1.5;
-  margin:0 0 24px;flex:1; /* pushes the button to the bottom */
+  margin:0 0 24px;flex:1;
 }
 
-/* buttons */
 .plan-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
   background:#d1bbfa;color:#1a0b2e;
@@ -1066,7 +1040,18 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   padding:14px 20px;border-radius:100px;
   margin-top:auto;transition:background .2s,transform .2s;
 }
-.plan-btn:hover{background:#e0d0fd;transform:translateY(-1px)}
+.plan-btn:hover{background:#e0d0fd;transf/* Coming-soon store buttons: no hover lift, since they aren't clickable */
+.btn-soon:hover{transform:none}
+
+#patients .btn-soon,
+#patients .btn-soon:hover{
+  color:var(--purple-deep);
+  background:#fff;
+  border-color:rgba(42,17,99,.28);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  opacity:1;
+}orm:translateY(-1px)}
 .plan-btn svg{transition:transform .2s}
 .plan-btn:hover svg{transform:translateX(3px)}
 
@@ -1082,3 +1067,16 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
 .btn-soon{display:inline-flex;align-items:center;gap:.5rem;cursor:default;opacity:.8;user-select:none}
 .soon-tag{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .55rem;border-radius:999px;background:#c9a24a;color:#0b0b12;line-height:1.2}
 .nav-soon{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:.4rem;padding:.12rem .4rem;border-radius:999px;background:#c9a24a;color:#0b0b12;vertical-align:middle}
+/* Coming-soon store buttons: no hover lift, since they aren't clickable */
+.btn-soon:hover{transform:none}
+
+/* Light-background version (Patients section) */
+#patients .btn-soon,
+#patients .btn-soon:hover{
+  color:var(--purple-deep);
+  background:#fff;
+  border-color:rgba(42,17,99,.28);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  opacity:1;
+}
