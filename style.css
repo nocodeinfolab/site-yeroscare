@@ -1080,3 +1080,21 @@ footer{background:#120824;color:rgba(255,255,255,.5);padding:56px 5vw 36px}
   backdrop-filter:none;
   opacity:1;
 }
+html { scroll-behavior: smooth; }
+
+
+a.panel-strip {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#patients,
+#doctors {
+  scroll-margin-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
